@@ -3,7 +3,8 @@ import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import React from 'react';
 import { getSortedPostsData } from '../lib/posts';
- 
+import Link from 'next/link';
+import Date from '../components/date';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -15,7 +16,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }: { allPostsData: { date: string; title: string; id: string }[] }) {
-  return (  
+  return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
@@ -25,11 +26,11 @@ export default function Home({ allPostsData }: { allPostsData: { date: string; t
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
