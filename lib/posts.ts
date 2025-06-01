@@ -41,7 +41,7 @@ export async function getAllPostIds() {
   // fetch post data from an external API endpoint
   const res = await fetch('..');
   const posts = await res.json();
-  return posts.map((post) => {
+  return posts.map((post: { id: any; }) => {
     return {
       params: {
         id: post.id,

@@ -6,16 +6,16 @@ import Script from "next/script";
 
 export default function FirstPost() {
   return (<>
-    <Layout>
+    <Layout home={false}>
       <Head>
         <title>First Post</title>
 
         <Script src="https://connect.facebook.net/en_US/sdk.js"
-         strategy="beforeInteractive"
-         onLoad={() => {
-          console.log("script loaded correctly, window.FB has been populated")
-         }}
-         />
+          strategy="beforeInteractive"
+          onLoad={() => {
+            console.log("script loaded correctly, window.FB has been populated")
+          }}
+        />
       </Head>
       <h1>First Post</h1>
       <h2>
